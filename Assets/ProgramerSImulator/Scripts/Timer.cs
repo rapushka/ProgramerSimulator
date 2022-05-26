@@ -13,6 +13,11 @@ public class Timer : MonoBehaviour
 
     public event Action Tick;
 
+    public void Construct()
+    {
+        
+    }
+
     private void Update()
     {
         _elapsedTime += Time.deltaTime;
@@ -21,10 +26,5 @@ public class Timer : MonoBehaviour
             _elapsedTime = 0;
             Tick?.Invoke();
         }
-    }
-
-    internal void Construct()
-    {
-        
     }
 }
