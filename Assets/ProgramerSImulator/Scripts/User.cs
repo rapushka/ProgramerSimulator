@@ -4,7 +4,7 @@ using UnityEngine;
 public class User : IDisposable
 {
     private int _expirience;
-    private int _money;
+    private int _moneyAmount;
     private int _health;
     private int _satiety;
     private DateTime _currentDate;
@@ -22,7 +22,7 @@ public class User : IDisposable
         _timer = timer;
         _currentDate = new DateTime(2_000, 1, 1);
         _health = 75;
-        _money = 1_000;
+        _moneyAmount = 1_000;
         _work = new Unemployed();
         _satiety = 75;
 
@@ -35,10 +35,21 @@ public class User : IDisposable
     }
 
     public string Expirience => _expirience.ToString();
-    public string Money => _money.ToString("c");
+    public string Money => _moneyAmount.ToString("c");
     public string Health => _health.ToString();
     public string Satiety => _satiety.ToString();
     public string CurrentDate => _currentDate.ToShortDateString();
+
+    public void Eat(IFood food)
+    {
+        if (_moneyAmount < food.Price)
+        {
+            return;
+        }
+
+        _moneyAmount -= food.Price;
+        _satiety += food.NutritionalValue;
+    }
 
     private void OnTick()
     {
@@ -79,7 +90,7 @@ public class User : IDisposable
 
     private void OnNewMonth()
     {
-        _money += _work.GetSalary();
+        _moneyAmount += _work.GetSalary();
     }
 
     private void OnNewYear()

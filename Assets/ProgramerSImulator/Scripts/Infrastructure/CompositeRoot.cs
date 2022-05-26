@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class CompositeRoot : MonoBehaviour
 {
+    [SerializeField] private FoodShop _foodShop;
+    [Space]
     [SerializeField] private GameObject _gameOverScreen;
 
     private void Start()
@@ -19,6 +21,7 @@ public class CompositeRoot : MonoBehaviour
         User user = new User(timer);
         GameCycle gameCycle = new GameCycle(user, _gameOverScreen);
 
+        _foodShop.Construct(user);
         userView.Construct(user);
         timer.Construct();
     }
