@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private int _tickDuration;
+    [SerializeField] private float _tickDuration;
 
     private float _elapsedTime;
 

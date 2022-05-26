@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class User : IDisposable
@@ -25,6 +23,7 @@ public class User : IDisposable
         _health = 75;
         _money = 1_000;
         _work = new Unemployed();
+        _satiety = 75;
 
         _timer.Tick += OnTick;
     }
@@ -43,12 +42,29 @@ public class User : IDisposable
     private void OnTick()
     {
         NextDay();
+
+        if (_satiety > 0)
+        {
+            _satiety--;
+        }
+        else
+        {
+            if (_health > 0)
+            {
+                _health--;
+            }
+            else
+            {
+                Debug.Log("Game over");
+                Time.timeScale = 0;
+            }
+        }
+
         Updated?.Invoke();
     }
 
     private void NextDay()
     {
-
         DateTime yesterday = _currentDate;
         _currentDate = yesterday.AddDays(1);
         if (yesterday.Month != _currentDate.Month)
