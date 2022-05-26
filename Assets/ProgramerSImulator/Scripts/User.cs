@@ -49,6 +49,8 @@ public class User : IDisposable
 
         _moneyAmount -= food.Price;
         _satiety += food.NutritionalValue;
+
+        Updated?.Invoke();
     }
 
     private void OnTick()
