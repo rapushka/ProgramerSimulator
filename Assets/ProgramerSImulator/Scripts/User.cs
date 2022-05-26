@@ -15,6 +15,7 @@ public class User : IDisposable
     public const int MinHealth = 0;
 
     public event Action Updated;
+    public event Action Died;
 
     public User(Timer timer)
     {
@@ -55,8 +56,7 @@ public class User : IDisposable
             }
             else
             {
-                Debug.Log("Game over");
-                Time.timeScale = 0;
+                Died?.Invoke();
             }
         }
 

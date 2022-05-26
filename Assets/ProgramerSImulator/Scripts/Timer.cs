@@ -22,4 +22,9 @@ public class Timer : MonoBehaviour
             Tick?.Invoke();
         }
     }
+
+    internal void Construct()
+    {
+        
+    }
 }

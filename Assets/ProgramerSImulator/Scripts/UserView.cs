@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class UserView : MonoBehaviour
 {
-    [SerializeField] private Timer _timer;
     [SerializeField] private TextMeshProUGUI _date;
     [SerializeField] private TextMeshProUGUI _expirience;
     [SerializeField] private TextMeshProUGUI _money;
@@ -12,12 +11,18 @@ public class UserView : MonoBehaviour
 
     private User _userModel;
 
-    private void Start()
+    public void Construct(User model)
     {
-        _userModel = new User(_timer);
+        _userModel = model;
 
         _userModel.Updated += OnModelUpdated;
     }
+    private void OnDestroy()
+    {
+        _userModel.Updated -= OnModelUpdated;
+    }
+
+    public User UserModel => _userModel;
 
     private void OnModelUpdated()
     {
