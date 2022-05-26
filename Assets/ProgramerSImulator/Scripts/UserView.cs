@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TMPro;
 using UnityEngine;
 
 public class UserView : MonoBehaviour
 {
     [SerializeField] private Timer _timer;
-    [SerializeField] private TMPro.TextMeshProUGUI _date;
+    [SerializeField] private TextMeshProUGUI _date;
+    [SerializeField] private TextMeshProUGUI _expirience;
+    [SerializeField] private TextMeshProUGUI _money;
+    [SerializeField] private TextMeshProUGUI _health;
 
     private User _userModel;
 
@@ -21,6 +20,9 @@ public class UserView : MonoBehaviour
 
     private void OnModelUpdated()
     {
-        _date.text = _userModel.CurrentDate; 
+        _date.text = _userModel.CurrentDate;
+        _expirience.text = _userModel.Expirience;
+        _health.text = _userModel.Health;
+        _money.text = _userModel.Money;
     }
 }
