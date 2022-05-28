@@ -42,6 +42,7 @@ public class User : IDisposable
     public string Health => _health.ToString();
     public string Satiety => _satiety.ToString();
     public string CurrentDate => _currentDate.ToShortDateString();
+    public string Work => _work.Title;
 
     public void Eat(IFood food)
     {

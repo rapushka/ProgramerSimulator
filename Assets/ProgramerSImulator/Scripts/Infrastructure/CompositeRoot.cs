@@ -10,6 +10,7 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private FoodShop _foodShop;
+    [SerializeField] private HR _hr;
     [Space]
     [SerializeField] private GameObject _gameOverScreen;
 
@@ -22,6 +23,7 @@ public class CompositeRoot : MonoBehaviour
         GameCycle gameCycle = new GameCycle(user, _gameOverScreen);
 
         _foodShop.Construct(user);
+        _hr.Construct(user);
         userView.Construct(user);
         timer.Construct();
     }
