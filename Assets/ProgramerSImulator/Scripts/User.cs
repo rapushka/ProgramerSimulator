@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class User : IDisposable
@@ -10,6 +11,7 @@ public class User : IDisposable
     private DateTime _currentDate;
     private Timer _timer;
     private IWork _work;
+    private List<ICourse> _courses;
 
     public const int MaxHealth = 100;
     public const int MinHealth = 0;
@@ -25,6 +27,7 @@ public class User : IDisposable
         _moneyAmount = 1_000;
         _work = new Unemployed();
         _satiety = 75;
+        _courses = new List<ICourse>();
 
         _timer.Tick += OnTick;
     }
@@ -53,6 +56,17 @@ public class User : IDisposable
         Updated?.Invoke();
     }
 
+    public void TryApplyWork(IWork work)
+    {
+        if (work.TryApply(_expirience, _courses) == false)
+        {
+            return;
+        }
+
+        _work = work;
+        Updated?.Invoke();
+    }
+
     private void OnTick()
     {
         NextDay();
@@ -61,16 +75,13 @@ public class User : IDisposable
         {
             _satiety--;
         }
+        else if (_health > 0)
+        {
+            _health--;
+        }
         else
         {
-            if (_health > 0)
-            {
-                _health--;
-            }
-            else
-            {
-                Died?.Invoke();
-            }
+            Died?.Invoke();
         }
 
         Updated?.Invoke();
@@ -80,6 +91,7 @@ public class User : IDisposable
     {
         DateTime yesterday = _currentDate;
         _currentDate = yesterday.AddDays(1);
+
         if (yesterday.Month != _currentDate.Month)
         {
             OnNewMonth();

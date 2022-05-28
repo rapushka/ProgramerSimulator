@@ -1,10 +1,7 @@
-﻿public interface IWork
+﻿using System.Collections.Generic;
+
+public interface IWork
 {
     int GetSalary();
-}
-
-
-public class Unemployed : IWork
-{
-    public int GetSalary() => 0;
+    bool TryApply(int experience, List<ICourse> courses);
 }
