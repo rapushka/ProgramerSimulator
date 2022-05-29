@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class User : IDisposable
@@ -43,6 +44,8 @@ public class User : IDisposable
     public string Satiety => _satiety.ToString();
     public string CurrentDate => _currentDate.ToShortDateString();
     public string Work => _work.Title;
+    public string Course => _courses.OrderBy((c) => c.Rank)?.LastOrDefault()?.Title
+        ?? "Нет пройденных курсов";
 
     public void Eat(IFood food)
     {

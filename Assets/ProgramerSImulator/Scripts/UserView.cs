@@ -9,6 +9,7 @@ public class UserView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _satiety;
     [SerializeField] private TextMeshProUGUI _work;
+    [SerializeField] private TextMeshProUGUI _courses;
 
     private User _userModel;
 
@@ -33,5 +34,6 @@ public class UserView : MonoBehaviour
         _money.text = _userModel.Money;
         _satiety.text = _userModel.Satiety;
         _work.text = _userModel.Work;
+        _courses.text = _userModel.Course;
     }
 }
