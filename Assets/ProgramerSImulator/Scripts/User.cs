@@ -12,7 +12,7 @@ public class User : IDisposable
     private DateTime _currentDate;
     private Timer _timer;
     private IWork _work;
-    private List<ICourse> _courses;
+    private List<Course> _courses;
 
     public const int MaxHealth = 100;
     public const int MinHealth = 0;
@@ -28,7 +28,7 @@ public class User : IDisposable
         _moneyAmount = 1_000;
         _work = new Unemployed();
         _satiety = 75;
-        _courses = new List<ICourse>();
+        _courses = new List<Course>();
 
         _timer.Tick += OnTick;
     }
@@ -44,7 +44,7 @@ public class User : IDisposable
     public string Satiety => _satiety.ToString();
     public string CurrentDate => _currentDate.ToShortDateString();
     public string Work => _work.Title;
-    public string Course => _courses.OrderBy((c) => c.Rank)?.LastOrDefault()?.Title
+    public string Course => _courses.LastOrDefault()?.Title
         ?? "Нет пройденных курсов";
 
     public void Eat(IFood food)

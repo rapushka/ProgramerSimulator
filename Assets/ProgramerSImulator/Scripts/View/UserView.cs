@@ -5,8 +5,8 @@ public class UserView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _date;
     [SerializeField] private TextMeshProUGUI _expirience;
-    [SerializeField] private TextMeshProUGUI _money;
     [SerializeField] private TextMeshProUGUI _health;
+    [SerializeField] private TextMeshProUGUI _money;
     [SerializeField] private TextMeshProUGUI _satiety;
     [SerializeField] private TextMeshProUGUI _work;
     [SerializeField] private TextMeshProUGUI _courses;

@@ -6,7 +6,7 @@ public class Unemployed : IWork
 
     public int GetSalary() => 0;
 
-    public bool TryApply(int experience, List<ICourse> courses)
+    public bool TryApply(int experience, List<Course> courses)
     {
         return true;
     }
