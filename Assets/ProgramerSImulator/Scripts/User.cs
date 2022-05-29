@@ -71,6 +71,11 @@ public class User : IDisposable
         Updated?.Invoke();
     }
 
+    public void TakeACourse(Course course)
+    {
+
+    }
+
     private void OnTick()
     {
         NextDay();

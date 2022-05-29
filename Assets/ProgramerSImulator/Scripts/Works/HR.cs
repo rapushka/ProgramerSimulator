@@ -1,21 +1,14 @@
 using UnityEngine;
 
-public class HR : MonoBehaviour
+public class HR : UserUpgrader
 {
-    private User _user;
-
-    public void Construct(User user)
-    {
-        _user = user;
-    }
-
     public void Quit()
     {
-        _user.TryApplyWork(new Unemployed());
+        User.TryApplyWork(new Unemployed());
     }
 
     public void TryApplyCourier()
     {
-        _user.TryApplyWork(new Courier());
+        User.TryApplyWork(new Courier());
     }
 }

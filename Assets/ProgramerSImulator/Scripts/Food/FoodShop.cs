@@ -2,27 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodShop : MonoBehaviour
+public class FoodShop : UserUpgrader
 {
-    private User _user;
-
-    public void Construct(User user)
+    public void EatShaurma()
     {
-        _user = user;
-    }
-
-    public void BuyShaurma()
-    {
-        _user.Eat(new Shaurma());
+        User.Eat(new Shaurma());
     }
 
     public void EatInMcDonalds()
     {
-        _user.Eat(new McDonalds());
+        User.Eat(new McDonalds());
     }
 
-    public void BuySushi()
+    public void EatSushi()
     {
-        _user.Eat(new Sushi());
+        User.Eat(new Sushi());
     }
 }

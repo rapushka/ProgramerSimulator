@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Courses : MonoBehaviour
+public class Courses : UserUpgrader
 {
     [SerializeField] private VariantView _variantView;
     [SerializeField] private List<Course> _courses;
@@ -21,7 +21,7 @@ public class Courses : MonoBehaviour
     {
         foreach (Course course in _courses)
         {
-            VariantView variant = Instantiate(_variantView, _container.transform);
+            var variant = Instantiate(_variantView, _container.transform);
             variant.Construct(course);
         }
     }
