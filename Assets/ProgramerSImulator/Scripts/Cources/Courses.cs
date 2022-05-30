@@ -7,8 +7,8 @@ public class Courses : UserUpgrader
     [SerializeField] private List<Course> _courses;
 
     private ContentContainer _container;
-
-    private void OnValidate()
+    
+    private void Awake()
     {
         _container = GetComponentInChildren<ContentContainer>();
         if (_container is null)
