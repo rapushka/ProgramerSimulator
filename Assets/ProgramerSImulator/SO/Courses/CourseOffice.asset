@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea174d441e78334c99977744a900251, type: 3}
   m_Name: CourseOffice
   m_EditorClassIdentifier: 
-  _price: 0
-  _title: 
+  _price: 6280
+  _title: "\u041E\u0441\u043D\u043E\u0432\u044B \u0440\u0430\u0431\u043E\u0442\u044B
+    \u0441 Office"
