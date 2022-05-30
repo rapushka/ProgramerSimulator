@@ -2,20 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodShop : UserUpgrader
+public class FoodShop : UserUpgrader<Food>
 {
-    public void EatShaurma()
+    protected override void Use(Food food)
     {
-        User.Eat(new Shaurma());
-    }
-
-    public void EatInMcDonalds()
-    {
-        User.Eat(new McDonalds());
-    }
-
-    public void EatSushi()
-    {
-        User.Eat(new Sushi());
+        User.Eat(food);
     }
 }

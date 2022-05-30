@@ -14,13 +14,14 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private Courses _courses;
     [Space]
     [SerializeField] private GameObject _gameOverScreen;
+    [SerializeField] private Work _unemployed;
 
     private void Start()
     {
         UserView userView = GetComponent<UserView>();
         Timer timer = GetComponent<Timer>();
 
-        User user = new User(timer);
+        User user = new User(timer, _unemployed);
         GameCycle gameCycle = new GameCycle(user, _gameOverScreen);
 
         _foodShop.Construct(user);

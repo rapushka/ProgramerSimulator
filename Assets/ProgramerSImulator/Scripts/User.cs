@@ -11,7 +11,7 @@ public class User : IDisposable
     private int _satiety;
     private DateTime _currentDate;
     private Timer _timer;
-    private IWork _work;
+    private Work _work;
     private List<Course> _courses;
 
     public const int MaxHealth = 100;
@@ -20,13 +20,13 @@ public class User : IDisposable
     public event Action Updated;
     public event Action<string> Died;
 
-    public User(Timer timer)
+    public User(Timer timer, Work unemployed)
     {
         _timer = timer;
+        _work = unemployed;
         _currentDate = new DateTime(2_000, 1, 1);
         _health = 75;
         _moneyAmount = 1_000;
-        _work = new Unemployed();
         _satiety = 75;
         _courses = new List<Course>();
 
@@ -47,7 +47,7 @@ public class User : IDisposable
     public string Course => _courses.LastOrDefault()?.Title
         ?? "Нет пройденных курсов";
 
-    public void Eat(IFood food)
+    public void Eat(Food food)
     {
         if (_moneyAmount < food.Price)
         {
@@ -60,7 +60,7 @@ public class User : IDisposable
         Updated?.Invoke();
     }
 
-    public void TryApplyWork(IWork work)
+    public void TryApplyWork(Work work)
     {
         if (work.TryApply(_expirience, _courses) == false)
         {
@@ -122,7 +122,7 @@ public class User : IDisposable
 
     private void OnNewMonth()
     {
-        _moneyAmount += _work.GetSalary();
+        _moneyAmount += _work.Salary;
     }
 
     private void OnNewYear()

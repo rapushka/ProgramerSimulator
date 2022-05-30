@@ -4127,7 +4127,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 516, y: 917}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -4502,6 +4502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3590925a9a0a947b598efa510e06a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _variantView: {fileID: 0}
+  _foods: []
 --- !u!1 &911456718
 GameObject:
   m_ObjectHideFlags: 0
@@ -5550,6 +5552,7 @@ MonoBehaviour:
   _variantView: {fileID: 3028643607700815085, guid: c2b098cdd71e35c428a0ca9731199543, type: 3}
   _courses:
   - {fileID: 11400000, guid: 20b2d270786b24d498d7a4fd60e6fd07, type: 2}
+  - {fileID: 11400000, guid: 1b6cf7fac87973745b10d66bd99b0fc6, type: 2}
 --- !u!114 &1254803417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7306,7 +7309,6 @@ GameObject:
   - component: {fileID: 1861714780}
   - component: {fileID: 1861714779}
   - component: {fileID: 1861714781}
-  - component: {fileID: 1861714782}
   m_Layer: 0
   m_Name: Panel Tabs
   m_TagString: Untagged
@@ -7403,27 +7405,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!223 &1861714782
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861714777}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 10
-  m_TargetDisplay: 0
 --- !u!1001 &1874201306
 PrefabInstance:
   m_ObjectHideFlags: 0

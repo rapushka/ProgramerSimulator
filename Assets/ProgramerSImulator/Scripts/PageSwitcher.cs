@@ -32,7 +32,7 @@ public class PageSwitcher : MonoBehaviour
             {
                 _pages.Add(nameof(soft), soft);
             }
-            else if (page is Work work)
+            else if (page is WorkPage work)
             {
                 _pages.Add(nameof(work), work);
             }

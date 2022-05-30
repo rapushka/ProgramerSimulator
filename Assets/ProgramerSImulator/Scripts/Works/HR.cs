@@ -1,14 +1,9 @@
-using UnityEngine;
+using System;
 
-public class HR : UserUpgrader
+public class HR : UserUpgrader<Work>
 {
-    public void Quit()
+    protected override void Use(Work work)
     {
-        User.TryApplyWork(new Unemployed());
-    }
-
-    public void TryApplyCourier()
-    {
-        User.TryApplyWork(new Courier());
+        User.TryApplyWork(work);
     }
 }
