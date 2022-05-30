@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class UserView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _date;
-    [SerializeField] private TextMeshProUGUI _expirience;
-    [SerializeField] private TextMeshProUGUI _health;
-    [SerializeField] private TextMeshProUGUI _money;
-    [SerializeField] private TextMeshProUGUI _satiety;
-    [SerializeField] private TextMeshProUGUI _work;
-    [SerializeField] private TextMeshProUGUI _courses;
+    [SerializeField] private PanelView _date;
+    [SerializeField] private PanelView _expirience;
+    [SerializeField] private PanelView _health;
+    [SerializeField] private PanelView _money;
+    [SerializeField] private PanelView _satiety;
+    [SerializeField] private PanelView _work;
+    [SerializeField] private PanelView _courses;
 
     private User _userModel;
 
@@ -28,12 +28,12 @@ public class UserView : MonoBehaviour
 
     private void OnModelUpdated()
     {
-        _date.text = _userModel.CurrentDate;
-        _expirience.text = _userModel.Expirience;
-        _health.text = _userModel.Health;
-        _money.text = _userModel.Money;
-        _satiety.text = _userModel.Satiety;
-        _work.text = _userModel.Work;
-        _courses.text = _userModel.Course;
+        _date.Value.text = _userModel.CurrentDate;
+        _expirience.Value.text = _userModel.Expirience;
+        _health.Value.text = _userModel.Health;
+        _money.Value.text = _userModel.Money;
+        _satiety.Value.text = _userModel.Satiety;
+        _work.Value.text = _userModel.Work;
+        _courses.Value.text = _userModel.Course;
     }
 }
