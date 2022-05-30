@@ -18,7 +18,7 @@ public class User : IDisposable
     public const int MinHealth = 0;
 
     public event Action Updated;
-    public event Action Died;
+    public event Action<string> Died;
 
     public User(Timer timer)
     {
@@ -90,7 +90,7 @@ public class User : IDisposable
         }
         else
         {
-            Died?.Invoke();
+            Died?.Invoke(CurrentDate);
         }
 
         Updated?.Invoke();
