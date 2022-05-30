@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(UserView))]
@@ -13,6 +9,8 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private HR _hr;
     [Space]
     [SerializeField] private GameObject _gameOverScreen;
+    [Space]
+    [SerializeField] private List<Page> _pages;
 
     private void Start()
     {
@@ -24,7 +22,13 @@ public class CompositeRoot : MonoBehaviour
 
         _foodShop.Construct(user);
         _hr.Construct(user);
-        userView.Construct(user);
+
+        foreach (Page page in _pages)
+        {
+            page.Construct(user);
+        }
+
+        userView.Construct(user, _pages);
         timer.Construct();
     }
 }

@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ public class User : IDisposable
         _satiety = 75;
         _courses = new List<Course>();
 
+        FillValues();
+
         _timer.Tick += OnTick;
     }
 
@@ -38,14 +41,21 @@ public class User : IDisposable
         _timer.Tick -= OnTick;
     }
 
-    public string Expirience => _expirience.ToString();
-    public string Money => _moneyAmount.ToString("c");
-    public string Health => _health.ToString();
-    public string Satiety => _satiety.ToString();
-    public string CurrentDate => _currentDate.ToShortDateString();
-    public string Work => _work.Title;
-    public string Course => _courses.LastOrDefault()?.Title
-        ?? "Нет пройденных курсов";
+    private void FillValues()
+    {
+        Values = new Dictionary<UserValues, string>()
+        {
+            { UserValues.Expirience, _expirience.ToString() },
+            { UserValues.Money, _moneyAmount.ToString("c") },
+            { UserValues.Health, _health.ToString() },
+            { UserValues.Satiety, _satiety.ToString() },
+            { UserValues.CurrentDate, _currentDate.ToShortDateString() },
+            { UserValues.Work, _work.Title },
+            { UserValues.Course, _courses.LastOrDefault()?.Title ?? "Нет пройденных курсов"},
+        };
+    }
+
+    public Dictionary<UserValues, string> Values;
 
     public void Eat(IFood food)
     {
@@ -73,7 +83,12 @@ public class User : IDisposable
 
     public void TakeACourse(Course course)
     {
+        if (_courses.Contains(course))
+        {
+            throw new InvalidOperationException();
+        }
 
+        _courses.Add(course);
     }
 
     private void OnTick()

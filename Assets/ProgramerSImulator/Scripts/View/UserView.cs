@@ -1,21 +1,18 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UserView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _date;
-    [SerializeField] private TextMeshProUGUI _expirience;
-    [SerializeField] private TextMeshProUGUI _health;
-    [SerializeField] private TextMeshProUGUI _money;
-    [SerializeField] private TextMeshProUGUI _satiety;
-    [SerializeField] private TextMeshProUGUI _work;
-    [SerializeField] private TextMeshProUGUI _courses;
+    [SerializeField] private Dossier _dossier;
 
     private User _userModel;
+    private List<Page> _pages;
 
-    public void Construct(User model)
+    public void Construct(User model, List<Page> pages)
     {
         _userModel = model;
+        _pages = pages;
 
         _userModel.Updated += OnModelUpdated;
     }
@@ -28,12 +25,6 @@ public class UserView : MonoBehaviour
 
     private void OnModelUpdated()
     {
-        _date.text = _userModel.CurrentDate;
-        _expirience.text = _userModel.Expirience;
-        _health.text = _userModel.Health;
-        _money.text = _userModel.Money;
-        _satiety.text = _userModel.Satiety;
-        _work.text = _userModel.Work;
-        _courses.text = _userModel.Course;
+        _pages.ForEach((p) => p.UpdateView());
     }
 }
