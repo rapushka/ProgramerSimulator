@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4160046500f94d914ec09e4dc724f, type: 3}
   m_Name: Courier
   m_EditorClassIdentifier: 
-  _salary: 0
-  _title: 
+  _title: "\u041A\u0443\u0440\u044C\u0435\u0440"
+  _salary: 15000
   _requiredExpirience: 0
   _requiredCourses: []
