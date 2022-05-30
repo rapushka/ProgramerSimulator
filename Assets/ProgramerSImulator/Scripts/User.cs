@@ -6,7 +6,7 @@ using UnityEngine;
 public class User : IDisposable
 {
     private int _expirience;
-    private int _moneyAmount;
+    private float _moneyAmount;
     private int _health;
     private int _satiety;
     private DateTime _currentDate;
@@ -73,7 +73,16 @@ public class User : IDisposable
 
     public void TakeACourse(Course course)
     {
+        if (_moneyAmount < course.Price
+            || _courses.Contains(course))
+        {
+            return;
+        }
 
+        _moneyAmount -= course.Price;
+        _courses.Add(course);
+
+        Updated?.Invoke();
     }
 
     private void OnTick()

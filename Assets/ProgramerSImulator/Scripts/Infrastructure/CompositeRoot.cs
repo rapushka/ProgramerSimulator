@@ -11,6 +11,7 @@ public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private FoodShop _foodShop;
     [SerializeField] private HR _hr;
+    [SerializeField] private Courses _courses;
     [Space]
     [SerializeField] private GameObject _gameOverScreen;
 
@@ -24,6 +25,7 @@ public class CompositeRoot : MonoBehaviour
 
         _foodShop.Construct(user);
         _hr.Construct(user);
+        _courses.Construct(user);
         userView.Construct(user);
         timer.Construct();
     }

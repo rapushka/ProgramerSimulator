@@ -21,8 +21,29 @@ public class Courses : UserUpgrader
     {
         foreach (Course course in _courses)
         {
-            var variant = Instantiate(_variantView, _container.transform);
+            VariantView variant = Instantiate(_variantView, _container.transform);
             variant.Construct(course);
+            variant.Click += OnClick;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var variant in _container.GetComponentsInChildren<VariantView>())
+        {
+            variant.Click -= OnClick;
+        }
+    }
+
+    private void OnClick(IVariant variant)
+    {
+        if (variant is Course course)
+        {
+            User.TakeACourse(course);
+        }
+        else
+        {
+            throw new System.Exception();
         }
     }
 }

@@ -22,15 +22,12 @@ public class PanelView : MonoBehaviour
 
     private void Start()
     {
-        var button = GetComponent<Button>();
-        if (button.enabled == false)
+        if (_window == null)
         {
             return;
         }
-        if (_window == null)
-        {
-            throw new NullReferenceException("If Button is enabled - need a window object");
-        }
+        var button = GetComponent<Button>();
+        button.enabled = true;
 
         button.onClick.AddListener(OnClick);
     }
