@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class VariantView : MonoBehaviour
 {
@@ -17,4 +18,9 @@ public class VariantView : MonoBehaviour
     }
 
     public IVariant Variant => _variant;
+
+    public void OnClick()
+    {
+
+    }
 }
